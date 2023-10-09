@@ -6,11 +6,11 @@ on: [push]
 # For the definition of these variables see https://docs.github.com/en/actions/deployment/deploying-to-your-cloud-provider/deploying-to-amazon-elastic-container-service
 env:
   AWS_REGION: us-east-2
-  ECR_REPOSITORY: foodformer
+  ECR_REPOSITORY: demo
   ECS_SERVICE: foodformer-ecs-service
   ECS_CLUSTER: foodformer-ecs-cluster
-  ECS_TASK_DEFINITION: foodformer-ecs-task-dev:2
-  CONTAINER_NAME: foodformer-container-dev
+  ECS_TASK_DEFINITION: foodformer-demo
+  CONTAINER_NAME: demo
 
 jobs:
   build-and-push:
