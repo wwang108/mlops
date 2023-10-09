@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  foodformer:
+    build: .
+    image: foodformer-demo
+    container_name: foodformer-container-demo
+    ports:
+      - "7860:7860"
+    stdin_open: true
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+    tty: true
+    volumes:
+      - ./app:/code/app
+      - ./serving:/example
+    # entrypoint: /bin/sh -c
+    command:
+      # ./serving/start_services.sh
+      gradio serving/demo.py --host 0.0.0.0 --port 7860 
+      # uvicorn serving.app:app --host 0.0.0.0 --port 8080
+      # ["uvicorn", "serving.app:app", "--host", "0.0.0.0", "--port", "8080"]
