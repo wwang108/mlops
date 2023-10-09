@@ -24,6 +24,7 @@ logger.remove()
 logger.add(sys.stderr, level="INFO", format="{message}", serialize=False)
 logger.info("Starting API, model version v0...")
 
+
 model_name_or_path = "google/vit-base-patch16-224-in21k"
 feature_extractor = ViTImageProcessor.from_pretrained(model_name_or_path)
 preprocessor = partial(feature_extractor, return_tensors="pt")

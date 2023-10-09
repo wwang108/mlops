@@ -10,7 +10,7 @@ env:
   ECS_SERVICE: foodformer-ecs-service-foodv1
   ECS_CLUSTER: foodformer-ecs-cluster
   ECS_TASK_DEFINITION: foodformer-food
-  CONTAINER_NAME: demo
+  CONTAINER_NAME: food
 
 jobs:
   build-and-push:
@@ -52,7 +52,7 @@ jobs:
         with:
           task-definition: task-definition.json
           container-name: ${{ env.CONTAINER_NAME }}
-          image: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:latest
+          image: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1

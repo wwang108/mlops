@@ -11,3 +11,6 @@ pytorch-lightning
 torchmetrics 
 transformers
 uvicorn[standard]
+requests
+gradio
+tensorflow

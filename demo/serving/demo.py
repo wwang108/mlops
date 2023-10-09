@@ -1,28 +1,28 @@
-import gradio as gr
 import requests
-import tensorflow as tf
-
-inception_net = tf.keras.applications.MobileNetV2()
-
-# Download human-readable labels for ImageNet.
-response = requests.get("https://git.io/JJkYN")
-labels = response.text.split("\n")
+import gradio as gr
 
 
-def classify_image(inp):
-    inp = inp.reshape((-1, 224, 224, 3))
-    inp = tf.keras.applications.mobilenet_v2.preprocess_input(inp)
-    prediction = inception_net.predict(inp).flatten()
-    confidences = {labels[i]: float(prediction[i]) for i in range(1000)}
-    return confidences
+def classify_image(filepath):
+    """
+    Function to send image to the FastAPI server for classification
+    and then return the results.
+    """
+
+    url = "http://3.146.35.94/predict"
+    with open(filepath, "rb") as f:
+        response = requests.post(url, files={"file": f})
+    
+    return response.json()['predictions']
 
 
-gr.Interface(
+oi = gr.Interface(
     fn=classify_image,
     inputs=gr.Image(
         shape=(224, 224), source="webcam", label="Upload Image or Capture from Webcam"
-    ),
-    outputs=gr.Label(num_top_classes=3, label="Predicted Class"),
-    examples=["/example/example.jpg"],
+    ,type="filepath"),
+    outputs=gr.Json(label="Predicted Results"),
+    examples=["example/example.jpg"],
     live=False,
-).launch(server_name="0.0.0.0")
+)
+
+oi.launch(server_name='0.0.0.0', server_port=7860)
