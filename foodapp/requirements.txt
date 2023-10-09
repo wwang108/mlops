@@ -1,6 +1,5 @@
 datasets
 fastapi
-gradio
 loguru
 numpy
 Pillow
@@ -11,6 +10,3 @@ pytorch-lightning
 torchmetrics 
 transformers
 uvicorn[standard]
-requests
-gradio
-tensorflow
