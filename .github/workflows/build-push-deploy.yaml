@@ -6,9 +6,9 @@ on: [workflow_dispatch]
 # For the definition of these variables see https://docs.github.com/en/actions/deployment/deploying-to-your-cloud-provider/deploying-to-amazon-elastic-container-service
 env:
   AWS_REGION: us-east-2
-  ECR_REPOSITORY: backup
-  ECS_SERVICE: backup
-  ECS_CLUSTER: backup
+  ECR_REPOSITORY: foodformer
+  ECS_SERVICE: food-test
+  ECS_CLUSTER: food-test
   ECS_TASK_DEFINITION: food-test:3
   CONTAINER_NAME: food
 
