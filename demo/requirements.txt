@@ -1,4 +1,0 @@
-requests
-gradio==3.42.0
-Pillow
-numpy
