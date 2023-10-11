@@ -6,4 +6,4 @@
 4. Push it to ECR
 5. Schedule a task in ECS and run as a service
 6. Use the API to serve as part of a DEMO in hugging face.
-7. Use Github Actions to do CT, CD
+7. Use Github Actions to do CI, CD
